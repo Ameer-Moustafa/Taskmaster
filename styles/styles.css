@@ -38,6 +38,14 @@ header {
   padding: 0.1rem 2rem;
 }
 
+/* task list styling */
+
+.task-list-parent {
+  font-family: "Source Sans 3", sans-serif;
+  padding: 4rem;
+  align-items: start;
+}
+
 /* Filter box styles */
 
 .filters-parent {
