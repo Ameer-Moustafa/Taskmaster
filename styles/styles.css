@@ -1,0 +1,10 @@
+/* Header styling */
+
+header {
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  font-family: "Playfair Display", serif;
+  font-size: 3rem;
+  color: var(--headings);
+}

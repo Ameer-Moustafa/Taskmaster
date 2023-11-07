@@ -1,0 +1,42 @@
+/* Importing Fonts */
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3&display=swap");
+
+/* CSS Reset */
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/* Color variables */
+
+:root {
+  --background-color: #1e1e1e;
+  --headings: #a08a7f;
+  --text-color: white;
+}
+
+/* Flexbox classes */
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  display: flex;
+  flex-direction: col;
+}
+
+/* universal styles */
+
+body {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--background-color);
+}
+
+ul {
+  list-style: none;
+}
