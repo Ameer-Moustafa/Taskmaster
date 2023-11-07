@@ -13,31 +13,37 @@
       <h1>Taskmaster</h1>
     </header>
 
-    <section>
-      <form>
-        <input type="text" />
-        <select>
+    <section class="flex flex-center task-input-parent">
+      <form class="flex flex-center form-container">
+        <input
+          class="input-field task-input-field"
+          type="text"
+          placeholder="Start typing to add a task..."
+        />
+        <select class="input-field task-input-priority">
           <option>Select a priority</option>
           <option>Low</option>
           <option>Normal</option>
           <option>High</option>
           <option>Critical</option>
         </select>
-        <button>Add</button>
+        <button class="input-field task-input-submit">Add</button>
       </form>
     </section>
 
-    <section>
+    <section class="task-list-parent">
       <ul>
         <li><input type="checkbox" /><span>Test</span> <span>X</span></li>
       </ul>
     </section>
 
-    <section>
-      <span>All</span>
-      <span>Priority</span>
-      <span>Active</span>
-      <span>Completed</span>
+    <section class="flex flex-center filters-parent">
+      <div class="flex flex-center filters-content-container">
+        <span>All</span>
+        <span>Priority</span>
+        <span>Active</span>
+        <span>Completed</span>
+      </div>
     </section>
   </body>
 </html>

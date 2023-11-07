@@ -6,5 +6,52 @@ header {
   align-items: center;
   font-family: "Playfair Display", serif;
   font-size: 3rem;
-  color: var(--headings);
+  color: var(--secondary-color);
+  padding-top: 3rem;
+}
+
+/* input section styling */
+
+.task-input-parent {
+  padding: 4rem 0rem;
+}
+
+.form-container {
+  gap: 1.5rem;
+  flex-grow: 1;
+}
+
+.task-input-field {
+  padding: 0.5rem 1rem;
+  flex-basis: 20%;
+}
+
+.task-input-field:focus {
+  outline: 2px solid var(--active-color);
+}
+
+.task-input-submit {
+  padding: 0.3rem 2rem;
+}
+
+.form-container select {
+  padding: 0.1rem 2rem;
+}
+
+/* Filter box styles */
+
+.filters-parent {
+  font-size: 1.5rem;
+  font-family: "Source Sans 3", sans-serif;
+  color: var(--text-color);
+  font-weight: 500;
+}
+
+.filters-content-container {
+  width: 37%;
+  padding: 0.5rem 2rem;
+  background-color: var(--secondary-color);
+  border-radius: 5px;
+  justify-content: space-between;
+  align-items: center;
 }

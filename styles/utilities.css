@@ -1,6 +1,6 @@
 /* Importing Fonts */
 
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Source+Sans+3:wght@400;500&display=swap");
 
 /* CSS Reset */
 * {
@@ -14,8 +14,9 @@
 
 :root {
   --background-color: #1e1e1e;
-  --headings: #a08a7f;
+  --secondary-color: #a08a7f;
   --text-color: white;
+  --active-color: #636b60;
 }
 
 /* Flexbox classes */
@@ -29,6 +30,11 @@
   flex-direction: col;
 }
 
+.flex-center {
+  align-items: center;
+  justify-content: center;
+}
+
 /* universal styles */
 
 body {
@@ -39,4 +45,19 @@ body {
 
 ul {
   list-style: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+/* Reusable class for input fields */
+
+.input-field {
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+  border-radius: 5px;
 }
