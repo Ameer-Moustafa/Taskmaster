@@ -17,7 +17,6 @@ function displayList() {
     task_checkbox.classList.add("task-checkbox");
 
     //Building our task text
-
     const task_text = document.createElement("span");
     task_text.classList.add("task-name");
     task_text.innerHTML = `${task.task}`;
@@ -31,6 +30,23 @@ function displayList() {
     task_item.append(task_checkbox, task_text, task_delete);
 
     task_list.appendChild(task_item);
+  });
+}
+
+// Handling task deletion
+
+function deleteItem() {
+  const delete_item = document.querySelectorAll(".task-delete");
+
+  delete_item.forEach((button) => {
+    button.addEventListener("click", () => {
+      const item_index = parseInt(
+        button.parentElement.getAttribute("data-index")
+      );
+
+      tasks = tasks.filter((task) => task.id != item_index);
+      displayList();
+    });
   });
 }
 
@@ -56,7 +72,9 @@ function getData() {
     task_input.value = "";
     task_priority.value = "0";
 
+    // reload necessary functions when adding a new item to our list
     displayList();
+    deleteItem();
   });
 }
 
