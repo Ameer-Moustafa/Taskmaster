@@ -14,20 +14,21 @@
     </header>
 
     <section class="flex flex-center task-input-parent">
-      <form class="flex flex-center form-container">
+      <form name="input-form" class="flex flex-center form-container">
         <input
           class="input-field task-input-field"
+          id="task-input"
           type="text"
           placeholder="Start typing to add a task..."
         />
-        <select class="input-field task-input-priority">
-          <option>Select a priority</option>
-          <option>Low</option>
-          <option>Normal</option>
-          <option>High</option>
-          <option>Critical</option>
+        <select id="task-priority" class="input-field task-input-priority">
+          <option value="0">Select a priority</option>
+          <option value="1">Low</option>
+          <option value="2">Normal</option>
+          <option value="3">High</option>
+          <option value="4">Critical</option>
         </select>
-        <button class="input-field task-input-submit">Add</button>
+        <button class="input-field task-input-submit" type="submit">Add</button>
       </form>
     </section>
 
