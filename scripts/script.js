@@ -50,6 +50,15 @@ function deleteItem() {
   });
 }
 
+// Handling checkbox functionality
+
+function checked() {
+  const checkbox = document.querySelectorAll(".task-checkbox");
+  checkbox.forEach((check) => {
+    check.addEventListener("change", () => {});
+  });
+}
+
 // Handling our data input
 
 function getData() {
@@ -75,6 +84,7 @@ function getData() {
     // reload necessary functions when adding a new item to our list
     displayList();
     deleteItem();
+    checked();
   });
 }
 
