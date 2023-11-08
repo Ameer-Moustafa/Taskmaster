@@ -52,10 +52,15 @@ function deleteItem() {
 
 // Handling checkbox functionality
 
+// TO-DO maybe use data-index and change completed on the corresponding item to true if the checkbox is checked
+
 function checked() {
   const checkbox = document.querySelectorAll(".task-checkbox");
+  const isChecked = document.querySelectorAll(".task-checkbox").checked;
   checkbox.forEach((check) => {
-    check.addEventListener("change", () => {});
+    check.addEventListener("change", () => {
+      // tasks = tasks.map((task) => {});
+    });
   });
 }
 

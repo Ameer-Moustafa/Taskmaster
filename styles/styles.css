@@ -94,3 +94,7 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+
+.filters-content-container span {
+  cursor: pointer;
+}
