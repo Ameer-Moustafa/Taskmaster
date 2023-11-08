@@ -20,6 +20,7 @@
           id="task-input"
           type="text"
           placeholder="Start typing to add a task..."
+          required
         />
         <select id="task-priority" class="input-field task-input-priority">
           <option value="0">Select a priority</option>
@@ -33,7 +34,7 @@
     </section>
 
     <section class="flex flex-center task-list-parent">
-      <ul class="task-list">
+      <ul id="task-list" class="task-list">
         <li class="flex task">
           <input class="task-checkbox" type="checkbox" /><span class="task-name"
             >Wake up and suffer</span
