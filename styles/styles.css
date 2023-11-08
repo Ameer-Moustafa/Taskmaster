@@ -43,7 +43,38 @@ header {
 .task-list-parent {
   font-family: "Source Sans 3", sans-serif;
   padding: 4rem;
-  align-items: start;
+}
+
+.task-list {
+  width: 40%;
+}
+
+.task {
+  gap: 1rem;
+  font-family: "Source Sans 3", sans-serif;
+  align-items: center;
+  color: var(--text-color);
+}
+
+.task-name {
+  flex-grow: 1;
+  font-size: 2.5rem;
+}
+
+.task-delete {
+  font-size: 2rem;
+}
+
+.task-checkbox {
+  background-color: var(--text-color);
+  appearance: none;
+  min-width: 2rem;
+  min-height: 2rem;
+  border-radius: 50%;
+}
+
+.task-checkbox:checked {
+  background-color: var(--secondary-color);
 }
 
 /* Filter box styles */
@@ -56,7 +87,7 @@ header {
 }
 
 .filters-content-container {
-  width: 37%;
+  width: 38%;
   padding: 0.5rem 2rem;
   background-color: var(--secondary-color);
   border-radius: 5px;
