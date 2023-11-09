@@ -15,6 +15,7 @@ function displayList() {
     const task_checkbox = document.createElement("input");
     task_checkbox.setAttribute("type", "checkbox");
     task_checkbox.classList.add("task-checkbox");
+    
 
     //Building our task text
     const task_text = document.createElement("span");
@@ -56,22 +57,21 @@ function deleteItem() {
 
 function handleComplete() {
   const checkbox = document.querySelectorAll(".task-checkbox");
-  
-
   checkbox.forEach((check) => {
-    const isChecked = check.checked;
     check.addEventListener("click", () => {
+      const isChecked = check.checked;
       const item_index = parseInt(
         check.parentElement.getAttribute("data-index")
       );
       tasks = tasks.map((task) => {
         if(task.id === item_index) {
           isChecked ? task.completed = true : task.completed = false
+          console.log(isChecked)
           console.log(task)
-          return task
         }
+        return task
       });
-      displayList()
+      
     });
   });
 }
