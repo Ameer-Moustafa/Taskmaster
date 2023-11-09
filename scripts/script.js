@@ -15,7 +15,6 @@ function displayList() {
     const task_checkbox = document.createElement("input");
     task_checkbox.setAttribute("type", "checkbox");
     task_checkbox.classList.add("task-checkbox");
-    
 
     //Building our task text
     const task_text = document.createElement("span");
@@ -64,14 +63,18 @@ function handleComplete() {
         check.parentElement.getAttribute("data-index")
       );
       tasks = tasks.map((task) => {
-        if(task.id === item_index) {
-          isChecked ? task.completed = true : task.completed = false
-          console.log(isChecked)
-          console.log(task)
+        if (task.id === item_index) {
+          if (isChecked) {
+            task.completed = true;
+            check.setAttribute("checked", true);
+          } else {
+            task.completed = false;
+            check.setAttribute("checked", false);
+          }
         }
-        return task
+        return task;
       });
-      
+      displayList();
     });
   });
 }

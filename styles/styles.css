@@ -62,10 +62,12 @@ header {
 }
 
 .task-delete {
+  cursor: pointer;
   font-size: 2rem;
 }
 
 .task-checkbox {
+  cursor: pointer;
   background-color: var(--text-color);
   appearance: none;
   min-width: 2rem;
