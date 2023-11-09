@@ -5,6 +5,7 @@ tasks = [];
 function displayList() {
   const task_list = document.getElementById("task-list");
   task_list.innerHTML = "";
+
   tasks.map((task) => {
     // Building our outer task item
     let task_item = document.createElement("li");
@@ -16,6 +17,7 @@ function displayList() {
     task_checkbox.setAttribute("type", "checkbox");
     task_checkbox.classList.add("task-checkbox");
 
+    //setting our checkbox state depending on our task completed property
     task_checkbox.checked = task.completed;
 
     //Building our task text
@@ -23,7 +25,7 @@ function displayList() {
     task_text.classList.add("task-name");
     task_text.innerHTML = `${task.task}`;
 
-    //Building our delete mechanism
+    //Building our delete task "button"
     const task_delete = document.createElement("span");
     task_delete.innerText = "x";
     task_delete.classList.add("task-delete");
@@ -54,16 +56,16 @@ function deleteItem() {
 
 // Handling checkbox functionality
 
-// TO-DO maybe use data-index and change completed on the corresponding item to true if the checkbox is checked
-
 function handleComplete() {
   const checkbox = document.querySelectorAll(".task-checkbox");
+
   checkbox.forEach((check) => {
     check.addEventListener("click", () => {
       const isChecked = check.checked;
       const item_index = parseInt(
         check.parentElement.getAttribute("data-index")
       );
+
       tasks = tasks.map((task) => {
         if (task.id === item_index) {
           if (isChecked) {
@@ -74,8 +76,27 @@ function handleComplete() {
         }
         return task;
       });
+    });
+  });
+}
 
-      displayList();
+// Handling task editing
+
+function editTask() {
+  const task_text = document.querySelectorAll(".task-name");
+  task_text.forEach((task_item) => {
+    task_item.addEventListener("dblclick", () => {
+      const item_index = parseInt(
+        task_item.parentElement.getAttribute("data-index")
+      );
+
+      tasks.forEach((task) => {
+        if (item_index === task.id) {
+          let new_task_value = prompt("What would you like to do instead?");
+          task.task = new_task_value;
+        }
+        displayList();
+      });
     });
   });
 }
@@ -102,8 +123,9 @@ function getData() {
     task_input.value = "";
     task_priority.value = "0";
 
-    // reload necessary functions when adding a new item to our list
+    // reload necessary functions when adding a new item to our list to attach the necessary event listeners
     displayList();
+    editTask();
     deleteItem();
     handleComplete();
   });
