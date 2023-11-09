@@ -16,6 +16,8 @@ function displayList() {
     task_checkbox.setAttribute("type", "checkbox");
     task_checkbox.classList.add("task-checkbox");
 
+    task_checkbox.checked = task.completed;
+
     //Building our task text
     const task_text = document.createElement("span");
     task_text.classList.add("task-name");
@@ -66,14 +68,13 @@ function handleComplete() {
         if (task.id === item_index) {
           if (isChecked) {
             task.completed = true;
-            check.setAttribute("checked", true);
           } else {
             task.completed = false;
-            check.setAttribute("checked", false);
           }
         }
         return task;
       });
+
       displayList();
     });
   });
