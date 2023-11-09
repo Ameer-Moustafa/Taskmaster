@@ -54,12 +54,24 @@ function deleteItem() {
 
 // TO-DO maybe use data-index and change completed on the corresponding item to true if the checkbox is checked
 
-function checked() {
+function handleComplete() {
   const checkbox = document.querySelectorAll(".task-checkbox");
-  const isChecked = document.querySelectorAll(".task-checkbox").checked;
+  
+
   checkbox.forEach((check) => {
-    check.addEventListener("change", () => {
-      // tasks = tasks.map((task) => {});
+    const isChecked = check.checked;
+    check.addEventListener("click", () => {
+      const item_index = parseInt(
+        check.parentElement.getAttribute("data-index")
+      );
+      tasks = tasks.map((task) => {
+        if(task.id === item_index) {
+          isChecked ? task.completed = true : task.completed = false
+          console.log(task)
+          return task
+        }
+      });
+      displayList()
     });
   });
 }
@@ -89,7 +101,7 @@ function getData() {
     // reload necessary functions when adding a new item to our list
     displayList();
     deleteItem();
-    checked();
+    handleComplete();
   });
 }
 
