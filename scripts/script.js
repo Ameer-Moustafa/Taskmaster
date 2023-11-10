@@ -9,10 +9,10 @@ const completed_filter_button = document.getElementById("completed-filter");
 const sort_button = document.getElementById("priority-sort");
 
 // Mapping our data to the DOM
-function displayList(taskArray) {
+const displayList = (taskArray) => {
   task_list.innerHTML = "";
 
-  taskArray.map((task) => {
+  taskArray.forEach((task) => {
     // Building our outer task item
     let task_item = document.createElement("li");
     task_item.classList.add("flex", "task");
@@ -41,11 +41,11 @@ function displayList(taskArray) {
 
     task_list.appendChild(task_item);
   });
-}
+};
 
 // Handling task deletion
 
-function deleteItem() {
+const deleteItem = () => {
   const delete_item = document.querySelectorAll(".task-delete");
 
   delete_item.forEach((button) => {
@@ -58,15 +58,15 @@ function deleteItem() {
       displayList(tasks);
     });
   });
-}
+};
 
 // Handling checkbox functionality
 
-function handleComplete() {
+const handleComplete = () => {
   const checkbox = document.querySelectorAll(".task-checkbox");
 
   checkbox.forEach((check) => {
-    check.addEventListener("click", () => {
+    check.addEventListener("change", () => {
       const isChecked = check.checked;
       const item_index = parseInt(
         check.parentElement.getAttribute("data-index")
@@ -84,11 +84,11 @@ function handleComplete() {
       });
     });
   });
-}
+};
 
 // Handling task editing
 
-function editTask() {
+const editTask = () => {
   const task_text = document.querySelectorAll(".task-name");
   task_text.forEach((task_item) => {
     task_item.addEventListener("dblclick", () => {
@@ -107,13 +107,13 @@ function editTask() {
       });
     });
   });
-}
+};
 
 // handling priority sorting and filtering
 
 // Creating a copy of our original tasks array to sort and filter freely.
 
-function FilterAll() {
+const FilterAll = () => {
   default_filter.addEventListener("click", () => {
     if (
       active_filter_button.classList.contains("active") ||
@@ -128,9 +128,9 @@ function FilterAll() {
     default_filter.classList.add("active");
     displayList(tasks);
   });
-}
+};
 
-function FilterActive() {
+const FilterActive = () => {
   active_filter_button.addEventListener("click", () => {
     const active_tasks = tasks.filter((task) => !task.completed);
 
@@ -147,9 +147,9 @@ function FilterActive() {
     active_filter_button.classList.add("active");
     displayList(active_tasks);
   });
-}
+};
 
-function FilterCompleted() {
+const FilterCompleted = () => {
   completed_filter_button.addEventListener("click", () => {
     const completed_tasks = tasks.filter((task) => task.completed);
 
@@ -167,9 +167,9 @@ function FilterCompleted() {
 
     displayList(completed_tasks);
   });
-}
+};
 
-function SortByPriority() {
+const SortByPriority = () => {
   sort_button.addEventListener("click", () => {
     if (
       active_filter_button.classList.contains("active") ||
@@ -185,11 +185,11 @@ function SortByPriority() {
     const sorted_tasks = tasks.toSorted((a, b) => b.priority - a.priority);
     displayList(sorted_tasks);
   });
-}
+};
 
-// Handling our data input
+// Handling our data input, creating a task object and appending it to our tasks data structure
 
-function getData() {
+const getData = () => {
   const input_form = document.forms["input-form"];
 
   input_form.addEventListener("submit", (e) => {
@@ -212,11 +212,11 @@ function getData() {
     // Initializing list after every form submission
     displayList(tasks);
   });
-}
+};
 
 getData();
 
-// Handling rebinding of events whenever li is added to my tasklist.
+// Handling rebinding of events whenever an item is added to or removed from my tasklist.
 const event_binding_handler = new MutationObserver(() => {
   editTask();
   deleteItem();

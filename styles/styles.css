@@ -92,6 +92,7 @@ header {
 
 .filters-parent {
   font-size: 1.5rem;
+  padding: 2rem 0rem;
   font-family: "Source Sans 3", sans-serif;
   color: var(--text-color);
   font-weight: 500;
