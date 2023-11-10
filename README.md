@@ -1,6 +1,6 @@
 # Taskmaster
 
-![image](https://github.com/Ameer-Moustafa/Taskmaster/assets/9211143/c0670203-e341-46d7-be94-0357ce8104b8)
+![image](./assets/screenshots/taskmaster.jpeg)
 
 ## About:
 
@@ -14,6 +14,7 @@ Taskmaster is a simple to-do list application written in vanilla JS. It was a wo
 - The ability to sort tasks by priority.
 
 ## What I learned:
+
 - The methodology of working with vanilla JS is wildly different than how it is done in something like React. I learned this the hard way.
 - Learned about the mutation observer and using it to handle changes in the DOM.
 - Solidified the fundamentals of DOM manipulation.
