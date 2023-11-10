@@ -3,6 +3,10 @@ let tasks = [];
 
 // Global DOM selections
 const task_list = document.getElementById("task-list");
+const default_filter = document.getElementById("default-filter");
+const active_filter_button = document.getElementById("active-filter");
+const completed_filter_button = document.getElementById("completed-filter");
+const sort_button = document.getElementById("priority-sort");
 
 // Mapping our data to the DOM
 function displayList(taskArray) {
@@ -110,31 +114,74 @@ function editTask() {
 // Creating a copy of our original tasks array to sort and filter freely.
 
 function FilterAll() {
-  const default_filter = document.getElementById("default-filter");
   default_filter.addEventListener("click", () => {
+    if (
+      active_filter_button.classList.contains("active") ||
+      completed_filter_button.classList.contains("active") ||
+      sort_button.classList.contains("active")
+    ) {
+      active_filter_button.classList.remove("active");
+      completed_filter_button.classList.remove("active");
+      sort_button.classList.remove("active");
+    }
+
+    default_filter.classList.add("active");
     displayList(tasks);
   });
 }
 
 function FilterActive() {
-  const active_filter_button = document.getElementById("active-filter");
   active_filter_button.addEventListener("click", () => {
     const active_tasks = tasks.filter((task) => !task.completed);
+
+    if (
+      default_filter.classList.contains("active") ||
+      completed_filter_button.classList.contains("active") ||
+      sort_button.classList.contains("active")
+    ) {
+      default_filter.classList.remove("active");
+      completed_filter_button.classList.remove("active");
+      sort_button.classList.remove("active");
+    }
+
+    active_filter_button.classList.add("active");
     displayList(active_tasks);
   });
 }
 
 function FilterCompleted() {
-  const completed_filter_button = document.getElementById("completed-filter");
   completed_filter_button.addEventListener("click", () => {
     const completed_tasks = tasks.filter((task) => task.completed);
+
+    if (
+      active_filter_button.classList.contains("active") ||
+      default_filter.classList.contains("active") ||
+      sort_button.classList.contains("active")
+    ) {
+      default_filter.classList.remove("active");
+      active_filter_button.classList.remove("active");
+      sort_button.classList.remove("active");
+    }
+
+    completed_filter_button.classList.add("active");
+
     displayList(completed_tasks);
   });
 }
 
 function SortByPriority() {
-  const sort_button = document.getElementById("priority-sort");
   sort_button.addEventListener("click", () => {
+    if (
+      active_filter_button.classList.contains("active") ||
+      default_filter.classList.contains("active") ||
+      completed_filter_button.classList.contains("active")
+    ) {
+      active_filter_button.classList.remove("active");
+      default_filter.classList.remove("active");
+      completed_filter_button.classList.remove("active");
+    }
+
+    sort_button.classList.add("active");
     const sorted_tasks = tasks.toSorted((a, b) => b.priority - a.priority);
     displayList(sorted_tasks);
   });
