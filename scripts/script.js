@@ -5,7 +5,7 @@ let tasks = [];
 const task_list = document.getElementById("task-list");
 
 // Mapping our data to the DOM
-function displayList() {
+function displayList(taskArray) {
   task_list.innerHTML = "";
 
   taskArray.map((task) => {
@@ -51,7 +51,7 @@ function deleteItem() {
       );
 
       tasks = tasks.filter((task) => task.id != item_index);
-      displayList();
+      displayList(tasks);
     });
   });
 }
@@ -97,7 +97,7 @@ function editTask() {
           let new_task_value = prompt("What would you like to do instead?");
           task.task = new_task_value;
         }
-        displayList();
+        displayList(tasks);
       });
     });
   });
@@ -107,17 +107,34 @@ function editTask() {
 
 // Creating a copy of our original tasks array to sort and filter freely.
 
-function handleDefaultFilter() {
+function FilterAll() {
   const default_filter = document.getElementById("default-filter");
   default_filter.addEventListener("click", () => {
-    displayList();
+    displayList(tasks);
   });
 }
 
-function handleActiveFilter() {
-  const active_filter = document.getElementById("active-filter");
-  active_filter.addEventListener("click", () => {
-    displayList();
+function FilterActive() {
+  const active_filter_button = document.getElementById("active-filter");
+  active_filter_button.addEventListener("click", () => {
+    const active_tasks = tasks.filter((task) => !task.completed);
+    displayList(active_tasks);
+  });
+}
+
+function FilterCompleted() {
+  const completed_filter_button = document.getElementById("completed-filter");
+  completed_filter_button.addEventListener("click", () => {
+    const completed_tasks = tasks.filter((task) => task.completed);
+    displayList(completed_tasks);
+  });
+}
+
+function SortByPriority() {
+  const sort_button = document.getElementById("priority-sort");
+  sort_button.addEventListener("click", () => {
+    const sorted_tasks = tasks.toSorted((a, b) => b.priority - a.priority);
+    displayList(sorted_tasks);
   });
 }
 
@@ -144,7 +161,7 @@ function getData() {
     task_priority.value = "0";
 
     // Initializing list after every form submission
-    displayList();
+    displayList(tasks);
   });
 }
 
@@ -155,8 +172,10 @@ const event_binding_handler = new MutationObserver(() => {
   editTask();
   deleteItem();
   handleComplete();
-  handleDefaultFilter();
-  handleActiveFilter();
+  FilterAll();
+  FilterActive();
+  FilterCompleted();
+  SortByPriority();
 });
 
 event_binding_handler.observe(task_list, {
