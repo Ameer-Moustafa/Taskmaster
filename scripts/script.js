@@ -95,7 +95,9 @@ function editTask() {
       tasks.forEach((task) => {
         if (item_index === task.id) {
           let new_task_value = prompt("What would you like to do instead?");
-          task.task = new_task_value;
+          if (new_task_value != null) {
+            task.task = new_task_value;
+          }
         }
         displayList(tasks);
       });
