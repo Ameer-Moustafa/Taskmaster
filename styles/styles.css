@@ -49,6 +49,10 @@ header {
   width: 40%;
 }
 
+.task-list li {
+  margin-bottom: 0.5rem;
+}
+
 .task {
   gap: 1rem;
   font-family: "Source Sans 3", sans-serif;
