@@ -118,13 +118,6 @@ header {
 
 /* Media Queries */
 
-@media screen and (max-width: 1212px) {
-  .filters-content-container {
-    width: 100%;
-    gap: 3rem;
-  }
-}
-
 /* Mobile view */
 @media screen and (max-width: 428px) {
   header {
@@ -153,11 +146,20 @@ header {
   }
 
   .filters-parent {
-    font-size: 1rem;
+    flex-basis: 70%;
+    font-size: 1.2rem;
   }
 
   .filters-content-container {
-    flex-basis: 80%;
+    gap: 1rem;
+    flex-basis: 50%;
+  }
+}
+
+@media screen and (min-width: 429px) and (max-width: 1212px) {
+  .filters-content-container {
+    width: 100%;
+    gap: 3rem;
   }
 }
 
