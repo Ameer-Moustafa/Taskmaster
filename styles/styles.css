@@ -100,6 +100,7 @@ header {
   border-radius: 5px;
   justify-content: space-between;
   align-items: center;
+  text-align: center;
 }
 
 .filters-content-container span {
@@ -108,4 +109,42 @@ header {
 
 .filters-content-container span:hover {
   color: var(--active-color);
+}
+
+/* Media Queries */
+
+/* Mobile view */
+@media screen and (max-width: 428px) {
+  header {
+    font-size: 2rem;
+  }
+
+  .task-input-parent {
+    font-size: 1rem;
+  }
+
+  .task-input-parent > :first-child {
+    flex-direction: column;
+  }
+
+  .task-list {
+    width: 100%;
+  }
+
+  .task {
+    width: 100%;
+  }
+
+  .task-name {
+    flex-grow: 1;
+    font-size: 1.3rem;
+  }
+
+  .filters-parent {
+    font-size: 1rem;
+  }
+
+  .filters-content-container {
+    width: 90%;
+  }
 }
