@@ -1,12 +1,14 @@
-tasks = [];
+// Main data structure for our tasks
+let tasks = [];
+
+// Global DOM selections
+const task_list = document.getElementById("task-list");
 
 // Mapping our data to the DOM
-
 function displayList() {
-  const task_list = document.getElementById("task-list");
   task_list.innerHTML = "";
 
-  tasks.map((task) => {
+  taskArray.map((task) => {
     // Building our outer task item
     let task_item = document.createElement("li");
     task_item.classList.add("flex", "task");
@@ -101,6 +103,24 @@ function editTask() {
   });
 }
 
+// handling priority sorting and filtering
+
+// Creating a copy of our original tasks array to sort and filter freely.
+
+function handleDefaultFilter() {
+  const default_filter = document.getElementById("default-filter");
+  default_filter.addEventListener("click", () => {
+    displayList();
+  });
+}
+
+function handleActiveFilter() {
+  const active_filter = document.getElementById("active-filter");
+  active_filter.addEventListener("click", () => {
+    displayList();
+  });
+}
+
 // Handling our data input
 
 function getData() {
@@ -123,12 +143,22 @@ function getData() {
     task_input.value = "";
     task_priority.value = "0";
 
-    // reload necessary functions when adding a new item to our list to attach the necessary event listeners
+    // Initializing list after every form submission
     displayList();
-    editTask();
-    deleteItem();
-    handleComplete();
   });
 }
 
 getData();
+
+// Handling rebinding of events whenever li is added to my tasklist.
+const event_binding_handler = new MutationObserver(() => {
+  editTask();
+  deleteItem();
+  handleComplete();
+  handleDefaultFilter();
+  handleActiveFilter();
+});
+
+event_binding_handler.observe(task_list, {
+  childList: true,
+});
