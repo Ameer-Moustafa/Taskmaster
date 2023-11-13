@@ -113,7 +113,7 @@ const editTask = () => {
 
 // Creating a copy of our original tasks array to sort and filter freely.
 
-const FilterAll = () => {
+const filterAll = () => {
   default_filter.addEventListener("click", () => {
     if (
       active_filter_button.classList.contains("active") ||
@@ -130,7 +130,7 @@ const FilterAll = () => {
   });
 };
 
-const FilterActive = () => {
+const filterActive = () => {
   active_filter_button.addEventListener("click", () => {
     const active_tasks = tasks.filter((task) => !task.completed);
 
@@ -149,7 +149,7 @@ const FilterActive = () => {
   });
 };
 
-const FilterCompleted = () => {
+const filterCompleted = () => {
   completed_filter_button.addEventListener("click", () => {
     const completed_tasks = tasks.filter((task) => task.completed);
 
@@ -169,7 +169,7 @@ const FilterCompleted = () => {
   });
 };
 
-const SortByPriority = () => {
+const sortByPriority = () => {
   sort_button.addEventListener("click", () => {
     if (
       active_filter_button.classList.contains("active") ||
@@ -221,10 +221,10 @@ const event_binding_handler = new MutationObserver(() => {
   editTask();
   deleteItem();
   handleComplete();
-  FilterAll();
-  FilterActive();
-  FilterCompleted();
-  SortByPriority();
+  filterAll();
+  filterActive();
+  filterCompleted();
+  sortByPriority();
 });
 
 event_binding_handler.observe(task_list, {
